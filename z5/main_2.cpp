@@ -9,7 +9,7 @@ template <typename T>
 struct are_same<T> : std::true_type {};
 
 template <typename T, typename U, typename... Ts>
-struct are_same<T, U, Ts...> : std::bool_constant<std::is_same<T, U>::value && are_same<U, Ts...>::value> {};
+struct are_same<T, U, Ts...> : std::bool_constant<std::is_same<std::decay_t<T>, std::decay_t<U>>::value && are_same<U, Ts...>::value> {};
 
 
 template<typename... Ts>
