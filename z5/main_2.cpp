@@ -18,5 +18,6 @@ constexpr bool are_same_v = are_same<Ts...>::value;
 
 int main() {
     static_assert(are_same_v<int, int32_t, signed int>, "compile assert");  // ok
+    static_assert(are_same_v<int, const int32_t, volatile signed int>, "compile assert");  // ok
     // static_assert(are_same_v<int, double>, "compile assert");  // compile error
 }
